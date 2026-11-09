@@ -1,11 +1,16 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { site } from "@/config/site";
 
 export const alt = "Barbearia Ojuara — Estilo, qualidade e tradição em São Cristóvão - SE";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const logo = await readFile(join(process.cwd(), "src/assets/logo-og.png"));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -14,26 +19,20 @@ export default function OpengraphImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
-          background: "#080808",
-          padding: "70px 80px",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "radial-gradient(ellipse at center, #1c1710 0%, #080808 70%)",
           color: "#F5F5F5",
-          border: "2px solid #C9A44C",
+          gap: 36,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18, color: "#C9A44C", fontSize: 22, letterSpacing: 8 }}>
-          <div style={{ width: 60, height: 2, background: "#C9A44C" }} />
-          TRADIÇÃO, ESTILO E EXCELÊNCIA HÁ MAIS DE {site.yearsInBusiness} ANOS
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
+        <img src={logoSrc} width={900} height={282} />
+        <div style={{ display: "flex", fontSize: 30, letterSpacing: 6, color: "#C9A44C" }}>
+          MAIS DE {site.yearsInBusiness} ANOS · {site.rating.toLocaleString("pt-BR")} ESTRELAS NO GOOGLE
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 30, letterSpacing: 14, color: "#A3A3A3" }}>BARBEARIA</div>
-          <div style={{ fontSize: 140, letterSpacing: 10, fontWeight: 700, lineHeight: 1 }}>OJUARA</div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26, color: "#A3A3A3" }}>
-          <span>{site.rating.toLocaleString("pt-BR")} estrelas no Google Maps</span>
-          <span>
-            {site.address.city} - {site.address.state} · {site.contact.phoneDisplay}
-          </span>
+        <div style={{ display: "flex", fontSize: 24, color: "#A3A3A3" }}>
+          {site.address.neighborhood}, {site.address.city} - {site.address.state} · Agende pelo WhatsApp
         </div>
       </div>
     ),

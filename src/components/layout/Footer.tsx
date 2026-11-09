@@ -19,7 +19,7 @@ export function Footer() {
       <div className="container-luxe">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Logo />
+            <Logo variant="full" className="h-auto w-full max-w-[22rem]" />
             <p className="mt-6 max-w-sm leading-relaxed text-mute">
               Há mais de {site.yearsInBusiness} anos cuidando do estilo de cada cliente com dedicação, profissionalismo e
               atenção aos detalhes. Avaliação de {site.rating.toLocaleString("pt-BR")} estrelas no Google.
@@ -77,7 +77,7 @@ export function Footer() {
                 </a>
                 {site.links.instagram ? (
                   <a href={site.links.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold tracking-wide text-gold hover:text-gold-soft">
-                    <InstagramIcon className="size-4" /> Instagram
+                    <InstagramIcon className="size-4" /> {site.links.instagramHandle}
                   </a>
                 ) : (
                   site.showPlaceholderHints && (

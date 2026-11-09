@@ -16,7 +16,7 @@ export function SectionHeading({ index, eyebrow, title, subtitle, align = "left"
     <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <Reveal>
         <p className={`eyebrow ${centered ? "justify-center" : ""}`}>
-          <span className="text-mute-2 tabular-nums">{index}</span>
+          <span className="text-ember tabular-nums">{index}</span>
           <span>{eyebrow}</span>
         </p>
       </Reveal>

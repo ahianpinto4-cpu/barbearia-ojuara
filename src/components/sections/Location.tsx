@@ -2,6 +2,7 @@ import { ArrowUpRight, Clock, MapPin, Navigation, Phone } from "lucide-react";
 import { site } from "@/config/site";
 import { directionsLink, mapsEmbedLink, mapsSearchLink, phoneHref, whatsappLink } from "@/lib/links";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -62,6 +63,13 @@ export function Location() {
                     <Phone className="size-4 text-gold" aria-hidden /> {site.contact.phoneDisplay}
                   </a>
                 </li>
+                {site.links.instagram && (
+                  <li>
+                    <a href={site.links.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-ice transition hover:text-gold">
+                      <InstagramIcon className="size-4 text-gold" /> {site.links.instagramHandle}
+                    </a>
+                  </li>
+                )}
                 <li className="flex items-start gap-3 text-mute">
                   <Clock className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden />
                   {site.openingHoursText ?? (

@@ -95,8 +95,9 @@ export const site = {
      * Enquanto estiver `null`, o site usa uma busca pelo nome + endereço.
      */
     googleBusinessProfile: null as string | null,
-    /** URL do Instagram oficial (ex.: "https://www.instagram.com/barbeariaojuara"). `null` = oculto. */
-    instagram: null as string | null,
+    /** Instagram oficial. `null` = oculto. */
+    instagram: "https://www.instagram.com/barber_oju/" as string | null,
+    instagramHandle: "@barber_oju",
   },
 
   /** Horário de funcionamento. Deixe `null` até a barbearia confirmar. */

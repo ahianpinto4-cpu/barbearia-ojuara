@@ -27,7 +27,8 @@ Defina a variável `NEXT_PUBLIC_SITE_URL` com o domínio final (ex.: `https://ww
 | Telefone / WhatsApp | `site.contact` |
 | Endereço | `site.address` |
 | Link oficial do Google (botão "Ver avaliações") | `site.links.googleBusinessProfile` |
-| Instagram | `site.links.instagram` |
+| Instagram (@barber_oju) | `site.links.instagram` / `instagramHandle` |
+| Logotipo | `public/brand/logo-header.webp` (cabeçalho) e `logo-full.webp` (rodapé); ícones em `src/app/icon.png` e `apple-icon.png`; imagem de compartilhamento usa `src/assets/logo-og.png` |
 | Horário de funcionamento | `site.openingHoursText` |
 | Serviços, preços e durações | `services` (preço `null` = "Valor sob consulta") |
 | Barbeiros | `barbers` (lista vazia = etapa de barbeiro é pulada) |
@@ -44,7 +45,6 @@ Defina a variável `NEXT_PUBLIC_SITE_URL` com o domínio final (ex.: `https://ww
 - [ ] Fotos dos serviços (opcional).
 - [ ] Fotos profissionais do espaço para substituir as imagens ilustrativas do Unsplash em `ambientImages`.
 - [ ] Link oficial do perfil no Google Maps.
-- [ ] Instagram oficial.
 - [ ] Horário de funcionamento e dias fechados.
 - [ ] Nomes dos barbeiros (se houver mais de um).
 - [ ] Avaliações reais do Google (copiadas com autorização).

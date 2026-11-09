@@ -34,7 +34,6 @@ function HeroArt() {
       <svg viewBox="0 0 400 400" className="absolute top-1/2 right-[-30%] h-[120%] -translate-y-1/2 text-gold opacity-25 sm:right-[-10%] lg:right-[2%] lg:h-[95%] lg:opacity-40">
         <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" strokeWidth="0.6" />
         <circle cx="200" cy="200" r="160" fill="none" stroke="currentColor" strokeWidth="0.3" />
-        <ellipse cx="200" cy="200" rx="62" ry="88" fill="none" stroke="currentColor" strokeWidth="6" />
         <path d="M200 10v40M200 350v40" stroke="currentColor" strokeWidth="0.8" />
       </svg>
     </div>

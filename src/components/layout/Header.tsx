@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { MapPin, Menu, Phone, X } from "lucide-react";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { useEffect, useState } from "react";
 import { navLinks, site } from "@/config/site";
 import { phoneHref } from "@/lib/links";
@@ -55,7 +56,7 @@ export function Header() {
     >
       <div className={`container-luxe flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16 lg:h-[4.5rem]" : "h-20 lg:h-24"}`}>
         <a href="#inicio" aria-label={`${site.name} — início`} className="relative z-10" onClick={() => setOpen(false)}>
-          <Logo />
+          <Logo priority className={`w-auto transition-all duration-500 ${scrolled ? "h-10 lg:h-12" : "h-12 lg:h-[3.75rem]"}`} />
         </a>
 
         <nav aria-label="Principal" className="hidden lg:block">
@@ -115,7 +116,7 @@ export function Header() {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-x-0 top-0 -z-10 flex h-dvh flex-col bg-ink px-5 pt-28 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-8 lg:hidden"
           >
-            <nav aria-label="Menu mobile" className="flex-1">
+            <nav aria-label="Menu mobile" className="flex-1 overflow-y-auto pb-6">
               <ul className="space-y-1">
                 {navLinks.map((l, i) => (
                   <motion.li
@@ -149,6 +150,11 @@ export function Header() {
                 <a href={phoneHref} className="inline-flex items-center gap-2 hover:text-gold">
                   <Phone className="size-4 text-gold" /> {site.contact.phoneDisplay}
                 </a>
+                {site.links.instagram && (
+                  <a href={site.links.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold">
+                    <InstagramIcon className="size-4 text-gold" /> {site.links.instagramHandle}
+                  </a>
+                )}
                 <span className="inline-flex items-start gap-2">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-gold" /> {site.address.full}
                 </span>

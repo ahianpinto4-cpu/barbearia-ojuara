@@ -167,7 +167,7 @@ async function runForConversation(
           result.reason === "not_configured"
             ? "Olá! Recebemos sua mensagem na Barbearia Ojuara 💈 Um atendente vai te responder por aqui em breve."
             : "Desculpe, tive uma instabilidade aqui. Já chamei a equipe da Barbearia Ojuara para continuar seu atendimento por aqui. 💈";
-        await handoff(conv, `Assistente indisponível (${result.reason}${result.detail ? `: ${result.detail}` : ""}).`, msg, opts);
+        await handoff(conv, `Assistente indisponível (${result.reason}${result.detail ? `: ${result.detail}` : ""})`, msg, opts);
         return;
       }
 

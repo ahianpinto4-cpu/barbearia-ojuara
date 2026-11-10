@@ -44,3 +44,6 @@ export function adminAlertRecipient(info: ModeInfo): string | null {
   const r = info.mode === "production" ? info.productionRecipient : info.testRecipient;
   return r.ok ? r.phone : null;
 }
+
+/** Telefone fictício usado pelo simulador do painel (nunca recebe mensagens reais). */
+export const SIMULATOR_PHONE = "5500000000001";

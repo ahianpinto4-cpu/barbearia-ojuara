@@ -59,7 +59,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${bodoni.variable} ${manrope.variable} antialiased`}>
+    <html lang="pt-BR" className={`${bodoni.variable} ${manrope.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        {/* Decide antes da primeira pintura se a abertura 3D vai tocar (evita "piscar" a página). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(location.pathname==="/"&&!localStorage.getItem("ojuara:intro:v1")&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&!/[?&]intro=0/.test(location.search))document.documentElement.dataset.intro="play"}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         <a
           href="#conteudo"

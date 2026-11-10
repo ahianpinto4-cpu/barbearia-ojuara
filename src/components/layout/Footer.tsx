@@ -6,6 +6,7 @@ import { Logo } from "@/components/ui/Logo";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { CurrentYear } from "./CurrentYear";
+import { ReplayIntroButton } from "@/components/animations/Intro";
 
 /** Ano de referência da última publicação (o componente atualiza no navegador). */
 const BUILD_YEAR = 2026;
@@ -95,6 +96,7 @@ export function Footer() {
           <p>
             © <CurrentYear fallback={BUILD_YEAR} /> {site.name}. Todos os direitos reservados.
           </p>
+          <ReplayIntroButton className="text-left transition-colors hover:text-gold" />
           <a href="#inicio" className="inline-flex items-center gap-2 transition-colors hover:text-gold">
             Voltar ao topo <ArrowUpRight className="size-4 -rotate-45" />
           </a>

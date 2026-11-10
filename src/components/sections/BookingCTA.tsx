@@ -40,11 +40,11 @@ export function BookingCTA() {
           <Reveal delay={0.24} className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <ButtonLink href={whatsappLink(site.messages.general)} external className="w-full sm:w-auto">
               <WhatsAppIcon className="size-5" />
-              Quero agendar meu corte
+              Agendar meu corte
             </ButtonLink>
             <BookingTrigger variant="outline" className="w-full sm:w-auto">
               <CalendarCheck className="size-4" />
-              Escolher data e horário
+              Montar meu pedido aqui
             </BookingTrigger>
           </Reveal>
           <Reveal delay={0.3}>

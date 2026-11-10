@@ -1,8 +1,14 @@
 import { site } from "@/config/site";
 
-/** Gera um link wa.me com a mensagem devidamente codificada. */
+/**
+ * Número que recebe as conversas iniciadas pelo site: deve ser o número
+ * conectado à WhatsApp Cloud API. Em testes, defina NEXT_PUBLIC_WHATSAPP_NUMBER
+ * com o número de teste da Meta; em produção, o oficial da barbearia.
+ */
+export const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || site.contact.whatsappNumber).replace(/\D/g, "");
+
 export function whatsappLink(message: string = site.messages.general): string {
-  return `https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
 export const phoneHref = `tel:+${site.contact.whatsappNumber}`;

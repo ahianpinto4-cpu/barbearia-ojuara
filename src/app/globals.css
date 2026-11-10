@@ -63,7 +63,7 @@
   }
   .eyebrow::before {
     content: "";
-    @apply h-px w-8 bg-gold/70;
+    @apply h-px w-8 bg-gradient-to-r from-ember to-gold/80;
   }
 
   .container-luxe {
@@ -113,5 +113,25 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Cobertura preta da abertura: aparece antes da hidratação e some sozinha
+   após 9 s caso algo falhe (o JavaScript normalmente a remove antes). */
+#intro-cover {
+  display: none;
+}
+html[data-intro="play"] #intro-cover {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  background: var(--color-ink);
+  animation: intro-failsafe 0.4s 9s forwards;
+}
+@keyframes intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
 }

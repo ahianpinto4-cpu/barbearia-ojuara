@@ -11,7 +11,7 @@ export function Location() {
     <section id="localizacao" aria-labelledby="localizacao-titulo" className="relative bg-ink py-24 sm:py-32 lg:py-40">
       <div className="container-luxe">
         <SectionHeading
-          index="05"
+          index="06"
           eyebrow="Localização"
           id="localizacao-titulo"
           title={

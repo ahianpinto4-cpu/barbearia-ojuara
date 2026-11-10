@@ -11,10 +11,9 @@ export function FloatingWhatsApp() {
   const [hint, setHint] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.5);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    // Sempre acessível: aparece logo após o carregamento (e depois da abertura).
+    const t = window.setTimeout(() => setVisible(true), 900);
+    return () => window.clearTimeout(t);
   }, []);
 
   useEffect(() => {

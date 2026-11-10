@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { ArrowUpRight, Clock, Scissors } from "lucide-react";
-import { services, site } from "@/config/site";
+import { site, type Service } from "@/config/site";
 import { formatDuration, formatPrice, whatsappLink } from "@/lib/links";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BookingTrigger } from "@/components/booking/BookingTrigger";
 
-export function Services() {
+export function Services({ services }: { services: Service[] }) {
   return (
     <section id="servicos" aria-labelledby="servicos-titulo" className="grain relative bg-ink-2 py-24 sm:py-32 lg:py-40">
       <div className="container-luxe">
@@ -81,7 +80,7 @@ export function Services() {
                       aria-label={`Agendar ${s.name} pelo WhatsApp`}
                       className="group/btn mt-6 inline-flex min-h-12 items-center justify-between gap-2 border border-line px-5 text-[0.7rem] font-bold tracking-[0.18em] text-ice uppercase transition-all duration-500 hover:border-gold hover:bg-gold hover:text-ink"
                     >
-                      Agendar serviço
+                      Reservar meu horário
                       <ArrowUpRight className="size-4 transition-transform duration-500 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                     </a>
                   </div>
@@ -92,10 +91,15 @@ export function Services() {
         </ul>
 
         <Reveal className="mt-12 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center">
-          <p className="text-mute">Não sabe qual escolher? Monte sua solicitação passo a passo.</p>
-          <BookingTrigger variant="ghost" size="md" className="px-0">
-            Abrir agendamento <ArrowUpRight className="size-4" />
-          </BookingTrigger>
+          <p className="text-mute">Não sabe qual escolher? Nossa equipe te ajuda pelo WhatsApp.</p>
+          <a
+            href={whatsappLink("Olá! Vim pelo site e gostaria de ajuda para escolher o melhor serviço para mim.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.18em] text-gold uppercase hover:text-gold-soft"
+          >
+            Falar com a Ojuara <ArrowUpRight className="size-4" />
+          </a>
         </Reveal>
       </div>
     </section>

@@ -4,7 +4,9 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { ArrowDown, BadgeCheck, Star } from "lucide-react";
 import { useRef } from "react";
 import { ambientImages, site } from "@/config/site";
-import { BookingTrigger } from "@/components/booking/BookingTrigger";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { useIntroDone } from "@/components/animations/useIntroDone";
+import { whatsappLink } from "@/lib/links";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { CountUp } from "@/components/ui/CountUp";
@@ -31,6 +33,7 @@ function HeroArt() {
   return (
     <div aria-hidden className="absolute inset-0 overflow-hidden bg-ink">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_40%,rgba(201,164,76,.16),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_90%_90%,rgba(223,52,12,.10),transparent_45%)]" />
       <svg viewBox="0 0 400 400" className="absolute top-1/2 right-[-30%] h-[120%] -translate-y-1/2 text-gold opacity-25 sm:right-[-10%] lg:right-[2%] lg:h-[95%] lg:opacity-40">
         <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" strokeWidth="0.6" />
         <circle cx="200" cy="200" r="160" fill="none" stroke="currentColor" strokeWidth="0.3" />
@@ -41,6 +44,11 @@ function HeroArt() {
 }
 
 export function Hero() {
+  const introDone = useIntroDone();
+  return <HeroInner key={introDone ? "ready" : "waiting"} />;
+}
+
+function HeroInner() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -122,11 +130,17 @@ export function Hero() {
           </motion.p>
 
           <motion.div {...fade(0.9)} className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:gap-4">
-            <BookingTrigger className="w-full sm:w-auto">Agendar meu horário</BookingTrigger>
-            <ButtonLink href="#sobre" variant="outline" className="w-full sm:w-auto">
-              Conhecer a barbearia
+            <ButtonLink href={whatsappLink()} external className="w-full sm:w-auto">
+              <WhatsAppIcon className="size-5" />
+              Agendar pelo WhatsApp
+            </ButtonLink>
+            <ButtonLink href="#servicos" variant="outline" className="w-full sm:w-auto">
+              Quero conhecer os serviços
             </ButtonLink>
           </motion.div>
+          <motion.p {...fade(1)} className="mt-4 text-xs text-mute sm:text-sm">
+            Converse, veja os horários e confirme pelo WhatsApp — sem precisar voltar ao site.
+          </motion.p>
         </div>
 
         {/* Indicadores de credibilidade */}

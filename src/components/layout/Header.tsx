@@ -5,9 +5,9 @@ import { MapPin, Menu, Phone, X } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import { useEffect, useState } from "react";
 import { navLinks, site } from "@/config/site";
-import { phoneHref } from "@/lib/links";
+import { phoneHref, whatsappLink } from "@/lib/links";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Logo } from "@/components/ui/Logo";
-import { BookingTrigger } from "@/components/booking/BookingTrigger";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,7 +81,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
-            <BookingTrigger size="md">Agendar horário</BookingTrigger>
+            <ButtonLink href={whatsappLink()} external size="md">Agendar meu corte</ButtonLink>
           </div>
           <button
             type="button"
@@ -143,9 +143,9 @@ export function Header() {
               transition={{ delay: 0.45, duration: 0.5 }}
               className="space-y-4"
             >
-              <BookingTrigger className="w-full" onOpen={() => setOpen(false)}>
-                Agendar meu horário
-              </BookingTrigger>
+              <ButtonLink href={whatsappLink()} external className="w-full" onClick={() => setOpen(false)}>
+                Agendar pelo WhatsApp
+              </ButtonLink>
               <div className="flex flex-col gap-2 text-sm text-mute">
                 <a href={phoneHref} className="inline-flex items-center gap-2 hover:text-gold">
                   <Phone className="size-4 text-gold" /> {site.contact.phoneDisplay}
